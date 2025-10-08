@@ -1,0 +1,20 @@
+ 
+  .Button {
+  border: none;
+  border-radius: 7px;
+  padding: 5px 10px;
+
+  font-weight: 900;
+  font-size: xx-large;
+  box-shadow: 15px 15px 25px grey;
+  
+  margin-bottom: 27px;
+  margin-right: 10px;
+
+
+  background-color: skyblue;
+  color: white;
+}
+.danger{
+  background-color: tomato;
+}
