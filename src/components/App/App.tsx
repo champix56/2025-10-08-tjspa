@@ -18,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" Component={Home}/>
           <Route path="/Editor" Component={Editor}/>
+          <Route path="/Editor/:id" Component={Editor}/>
           <Route path="/Thumbnail" Component={Thumbnail}/>
         </Routes>
       </FlexVGrow1>
