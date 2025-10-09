@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import currentReducer, { update } from "./current";
 import { emptyMeme } from "orsys-tjs-meme";
-import ressourcesReducer from "./ressources";
+import ressourcesReducer, { loadRessources } from "./ressources";
 
 const store=configureStore({
     reducer:combineReducers({current: currentReducer, ressources:ressourcesReducer})
@@ -11,6 +11,8 @@ export default store;
 //export des types generiques automatisé par la constitution du store
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+store.dispatch(loadRessources());
 
 
 // demo du store
