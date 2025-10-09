@@ -1,6 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { ImageInterface, MemeInterface } from "orsys-tjs-meme";
+import {
+  MemeSVGThumbnail,
+  type ImageInterface,
+  type MemeInterface,
+} from "orsys-tjs-meme";
 import { REST_ADR, REST_RESSOURCES } from "../config/constantes.js";
+import { saveCurrent } from "./current.js";
 interface IRessourcesState {
   memes: Array<MemeInterface>;
   images: Array<ImageInterface>;
@@ -16,10 +21,19 @@ const ressources = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(loadRessources.fulfilled, (s, a) => {
-        console.log(a.type);
+      console.log(a.type);
       s.images = a.payload.images;
       s.memes = a.payload.memes;
     });
+    builder.addCase(
+      saveCurrent.fulfilled,
+      (s, a: { type: string; payload: MemeInterface }) => {
+        const position = s.memes.findIndex((m) => m.id === a.payload.id);
+        if (position >= 0) {
+          s.memes[position] = a.payload;
+        } else s.memes.push(a.payload);
+      }
+    );
   },
 });
 
