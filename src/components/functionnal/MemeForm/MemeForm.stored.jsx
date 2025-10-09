@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UnconnectedMemeForm from "./MemeForm";
 
 import store from "../../../store/store";
@@ -6,7 +6,12 @@ import { update } from "../../../store/current";
 const MemeForm = (props) => {
   const [current, setcurrent] = useState(store.getState().current.meme);
   const [images, setimages] = useState(store.getState().ressources.images);
-
+  useEffect(() => {
+    store.subscribe(() => {
+      setCurrentMeme(store.getState().current.meme);
+      setImages(store.getState().ressources.images);
+    });
+  }, []);
   return (
     <UnconnectedMemeForm
       {...props}
