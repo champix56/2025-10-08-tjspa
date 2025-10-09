@@ -20,11 +20,13 @@ const App = () => {
   const [currentMeme, setCurrentMeme] = useState<MemeInterface>(emptyMeme);
   const [images, setImages] = useState<Array<ImageInterface>>([]);
   useEffect(() => {
-    fetch(`${REST_ADR}${REST_RESSOURCES.images}`)
-      .then((r) => {return r.json()})
-      .then((imgs) => setImages(imgs));
+    //mise a jour de l'etat actuel avec etat du store
+    setCurrentMeme(store.getState().current.meme);
+    setImages(store.getState().ressources.images);
+    //mise a jour pour les changements ulterieurs
     store.subscribe(()=>{
-      setCurrentMeme(store.getState().current.meme)
+      setCurrentMeme(store.getState().current.meme);
+      setImages(store.getState().ressources.images);
     })
 
   }, []);
