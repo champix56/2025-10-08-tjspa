@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import currentReducer, { update } from "./current";
 import { emptyMeme } from "orsys-tjs-meme";
 
 const store=configureStore({
-    reducer:currentReducer
+    reducer:combineReducers({current: currentReducer})
 })
 export default store;
 
@@ -31,4 +31,4 @@ store.dispatch(update({...emptyMeme,text:'hello', y:12}))
 console.log(store.getState());
 
 //affichage du current
-console.log(store.getState().meme)
+console.log(store.getState().current.meme)
