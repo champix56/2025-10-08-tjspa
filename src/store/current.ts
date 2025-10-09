@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { emptyMeme, type MemeInterface } from "orsys-tjs-meme";
-import { REST_ADR, REST_RESOURCES } from "../config/constantes.js";
+import { REST_ADR, REST_RESSOURCES } from "../config/constantes.js";
 const initialState = {
   meme: emptyMeme,
 };
@@ -27,7 +27,7 @@ export const saveCurrent = createAsyncThunk(
   "current/save",
   async (meme: MemeInterface) => {
     const pr = await fetch(
-      `${REST_ADR}${REST_RESOURCES.meme}${
+      `${REST_ADR}${REST_RESSOURCES.meme}${
         meme.id !== undefined ? `/${meme.id}` : ""
       }`,
       {
