@@ -1,4 +1,4 @@
-import React from 'react';
+//@ts-ignore
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import FlexHGrow3 from './FlexHGrow3';
