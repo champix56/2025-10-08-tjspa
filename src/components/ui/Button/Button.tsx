@@ -17,7 +17,7 @@ const Button: React.FC<IButtonProps> = ({
   const buttonOnClick = (
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    console.log("button clicked", evt);
+    //console.log("button clicked", evt);
     if (clickAction) {
       clickAction("on m'a violement cliquer dessus");
     }

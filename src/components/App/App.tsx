@@ -1,35 +1,43 @@
 import "./App.css";
 import Button from "../ui/Button/Button.jsx";
-
+import { useEffect, useState } from "react";
 import "./App.css";
 const App = () => {
+  const [counter, setCounter] = useState(-100);
+  useEffect(() => {
+    setCounter(0);
+   console.log('mount',counter)
+  }, []);
+  useEffect(() => {
+   console.log('useEffect->',counter)
+  }, [counter]);
+  useEffect(() => {
+    console.log('all refresh mount and unmount');
+    
+  });
   return (
-    <>
-      <div>DEMAT Breizh</div>
+    <div style={{ textAlign: "center" }}>
+      <div>Valeur du count : {counter}</div>
+      <hr />
       <Button
-        bgcolor="aquamarine"
-        type="button"
-        style={{
-          textDecoration: "underline",
-          fontStyle: "italic",
-          backgroundColor: "grey",
-        }}
-        clickAction={(unArg) => {
-          console.trace(unArg);
+        bgcolor="tomato"
+        clickAction={() => {
+          setCounter(counter - 1);
+          console.log(counter);
         }}
       >
-        Benjammin
+        -1
       </Button>
-      <Button bgcolor="skyblue">
-        <div>coucou</div>
+      <Button
+        bgcolor="skyblue"
+        clickAction={() => {
+          setCounter(counter + 1);
+          console.log(counter);
+        }}
+      >
+        +1
       </Button>
-      <br />
-      <Button>
-        <div>div1</div>
-        <div>div2</div>
-      </Button>
-      <Button />
-    </>
+    </div>
   );
 };
 
