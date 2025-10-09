@@ -1,6 +1,6 @@
 import React from "react";
 import UnconnectedMemeForm from "./MemeForm";
-
+import {update} from '../../../store/current.ts'
 import { useSelector, useDispatch} from "react-redux";
 const MemeForm = (props) => {
     const dispatch=useDispatch()
