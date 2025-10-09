@@ -1,8 +1,8 @@
 import React from 'react';
-import './TemplateName.css'
+import style from './TemplateName.module.css'
 const TemplateName = (props) => {
   return (
-    <div className="TemplateName" data-testid="TemplateName">
+    <div className={style.TemplateName} data-testid="TemplateName">
       TemplateName Component
     </div>
   )

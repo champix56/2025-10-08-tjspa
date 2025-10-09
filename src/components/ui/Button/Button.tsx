@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cmpstyle from "./Button.module.css";
 interface IButtonProps {
   style?: object;
@@ -14,9 +14,16 @@ const Button: React.FC<IButtonProps> = ({
   children,
   type = "button",
 }) => {
+  const [clicked, setclicked] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setclicked(false);
+    }, 230);
+  }, [clicked]);
   const buttonOnClick = (
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
+    setclicked(true);
     //console.log("button clicked", evt);
     if (clickAction) {
       clickAction("on m'a violement cliquer dessus");
@@ -25,7 +32,7 @@ const Button: React.FC<IButtonProps> = ({
   return (
     <button
       type={type}
-      className={cmpstyle.Button}
+      className={`${cmpstyle.Button}${clicked ? " " + cmpstyle.clicked : ""}`}
       style={{ ...style, backgroundColor: bgcolor }}
       data-testid="Button"
       onClick={buttonOnClick}

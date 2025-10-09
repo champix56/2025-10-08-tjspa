@@ -1,43 +1,30 @@
 import "./App.css";
-import Button from "../ui/Button/Button.jsx";
-import { useEffect, useState } from "react";
 import "./App.css";
+import FlexHGrow3 from "../layout/FlexHGrow3/FlexHGrow3";
+import FlexVGrow1 from "../layout/FlexVGrow1/FlexVGrow1";
+import Header from "../ui/Header/Header.jsx";
+import Navbar from "../ui/Navbar/Navbar";
+import MemeForm from "../functionnal/MemeForm/MemeForm";
+import { emptyMeme, MemeSVGViewer, type MemeInterface } from "orsys-tjs-meme";
+import Footer from "../ui/Footer/Footer";
+import { useState } from "react";
 const App = () => {
-  const [counter, setCounter] = useState(-100);
-  useEffect(() => {
-    setCounter(0);
-   console.log('mount',counter)
-  }, []);
-  useEffect(() => {
-   console.log('useEffect->',counter)
-  }, [counter]);
-  useEffect(() => {
-    console.log('all refresh mount and unmount');
-    
-  });
+  const [currentMeme, setCurrentMeme] = useState<MemeInterface>(emptyMeme);
   return (
-    <div style={{ textAlign: "center" }}>
-      <div>Valeur du count : {counter}</div>
-      <hr />
-      <Button
-        bgcolor="tomato"
-        clickAction={() => {
-          setCounter(counter - 1);
-          console.log(counter);
-        }}
-      >
-        -1
-      </Button>
-      <Button
-        bgcolor="skyblue"
-        clickAction={() => {
-          setCounter(counter + 1);
-          console.log(counter);
-        }}
-      >
-        +1
-      </Button>
-    </div>
+    <FlexHGrow3>
+      <Header />
+      <Navbar />
+      <FlexVGrow1>
+        <MemeSVGViewer basePath="" image={undefined} meme={currentMeme} />
+        <MemeForm
+          meme={currentMeme}
+          onMemeChange={(newMeme: MemeInterface) => {
+            setCurrentMeme(newMeme);
+          }}
+        />
+      </FlexVGrow1>
+      <Footer />
+    </FlexHGrow3>
   );
 };
 
