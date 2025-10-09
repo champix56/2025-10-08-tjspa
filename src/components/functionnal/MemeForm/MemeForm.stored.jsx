@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import UnconnectedMemeForm from "./MemeForm";
 
-import store from "../../../store/store";
-import { update } from "../../../store/current";
+import { useSelector, useDispatch} from "react-redux";
 const MemeForm = (props) => {
-  const [current, setcurrent] = useState(store.getState().current.meme);
-  const [images, setimages] = useState(store.getState().ressources.images);
-  useEffect(() => {
-    store.subscribe(() => {
-      setCurrentMeme(store.getState().current.meme);
-      setImages(store.getState().ressources.images);
-    });
-  }, []);
+    const dispatch=useDispatch()
+   const images =useSelector((storeState)=>storeState.ressources.images)
+   const current =useSelector((storeState)=>storeState.current.meme)
   return (
     <UnconnectedMemeForm
       {...props}
       images={images}
       meme={current}
-      onMemeChange={(newMeme) => store.dispatch(update(newMeme))}
+      onMemeChange={(newMeme) => dispatch(update(newMeme))}
     />
   );
 };
