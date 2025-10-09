@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import currentReducer, { update } from "./current";
 import { emptyMeme } from "orsys-tjs-meme";
+import ressourcesReducer from "./ressources";
 
 const store=configureStore({
-    reducer:combineReducers({current: currentReducer})
+    reducer:combineReducers({current: currentReducer, ressources:ressourcesReducer})
 })
 export default store;
 
