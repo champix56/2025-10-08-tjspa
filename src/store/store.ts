@@ -13,22 +13,24 @@ export type AppDispatch = typeof store.dispatch;
 
 
 // demo du store
-//affichage du contenu du store
-console.log(store.getState());
+//affichage du contenu du store a chaque changement (subscribe)
+store.subscribe(()=>{
+    console.log(store.getState());    
+})
 
 
 //envoi dune moddif dans le contenu du store
 store.dispatch(update({...emptyMeme,titre:'coucou', x:12}))
 
 //affichage du contenu du store
-console.log(store.getState());
+//console.log(store.getState());
 
 
 //envoi dune moddif dans le contenu du store
 store.dispatch(update({...emptyMeme,text:'hello', y:12}))
 
 //affichage du contenu du store
-console.log(store.getState());
+//console.log(store.getState());
 
 //affichage du current
 console.log(store.getState().current.meme)
