@@ -1,7 +1,11 @@
+import MemeThumbnail from "../components/ui/MemeThumbnail/MemeThumbnail.stored";
+
 const Thumbnail = () => {
   return (
-    <div>Thumbnail</div>
-  )
-}
+    <div className="Thumbnail">
+      <MemeThumbnail />
+    </div>
+  );
+};
 
-export default Thumbnail
+export default Thumbnail;
