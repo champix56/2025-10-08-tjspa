@@ -30,3 +30,5 @@ store.dispatch(update({...emptyMeme,text:'hello', y:12}))
 //affichage du contenu du store
 console.log(store.getState());
 
+//affichage du current
+console.log(store.getState().meme)
