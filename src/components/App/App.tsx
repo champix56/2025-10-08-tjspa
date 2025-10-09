@@ -17,16 +17,16 @@ import { useEffect, useState } from "react";
 import store from '../../store/store.ts'
 // import {memes as rest_memes,images as rest_imgs} from '../../../db/db.json'
 const App = () => {
-
-  //pour forcer l'import pour la demo 
-  console.log(store);
-
   const [currentMeme, setCurrentMeme] = useState<MemeInterface>(emptyMeme);
   const [images, setImages] = useState<Array<ImageInterface>>([]);
   useEffect(() => {
     fetch(`${REST_ADR}${REST_RESSOURCES.images}`)
       .then((r) => {return r.json()})
       .then((imgs) => setImages(imgs));
+    store.subscribe(()=>{
+      setCurrentMeme(store.getState().current.meme)
+    })
+
   }, []);
   return (
     <FlexHGrow3>
