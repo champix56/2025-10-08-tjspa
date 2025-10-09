@@ -16,6 +16,11 @@ const current = createSlice({
       s.meme = emptyMeme;
     },
   },
+  extraReducers(builder) {
+      builder.addCase(saveCurrent.fulfilled,(s,a)=>{
+        s.meme=a.payload
+      })
+  },
 });
 
 export const saveCurrent = createAsyncThunk(
