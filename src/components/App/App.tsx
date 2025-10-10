@@ -3,9 +3,10 @@ import FlexHGrow3 from "../layout/FlexHGrow3/FlexHGrow3";
 import FlexVGrow1 from "../layout/FlexVGrow1/FlexVGrow1";
 import Header from "../ui/Header/Header.jsx";
 import Navbar from "../ui/Navbar/Navbar";
-import MemeForm from "../functionnal/MemeForm/MemeForm.stored";
 import Footer from "../ui/Footer/Footer";
-import MemeSvgViewer from "../ui/MemeSVGViewer/MemeSVGViewer.stored.js";
+import { Route, Routes } from "react-router";
+import Home from "../../pages/Home.js";
+import Editor from "../../pages/Editor.js";
 
 const App = () => {
   return (
@@ -13,8 +14,11 @@ const App = () => {
       <Header />
       <Navbar />
       <FlexVGrow1>
-        <MemeSvgViewer basePath="" />
-        <MemeForm />
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/editor" element={<Editor />} />
+          <Route path="/editor/:id" element={<Editor />} />
+        </Routes>
       </FlexVGrow1>
       <Footer />
     </FlexHGrow3>
