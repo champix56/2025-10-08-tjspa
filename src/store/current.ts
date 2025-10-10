@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { emptyMeme, type MemeInterface } from 'orsys-tjs-meme';
+import { loadRessources } from './asyncCaller';
 
 const initialState = {
     meme:emptyMeme
@@ -18,6 +19,9 @@ const current = createSlice({
     // updatePosition:(s,a:{type:string,payload:{x:number,y:number}})=>{
     //     s.meme.x=a.payload.x>12?a.payload.x:12;
     // }
+  },
+  extraReducers:(builder)=>{
+   
   }
 });
 
