@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import style from "./MemeForm.module.css";
 import Button from "../../ui/Button/Button";
 const MemeForm = ({ meme, onMemeChange,images }) => {
-  const [current, setCurrent] = useState(meme);
-  useEffect(() => {
-    onMemeChange(current)
-  }, [current])
+  // const [current, setCurrent] = useState(meme);
+  // useEffect(() => {
+  //   onMemeChange(current)
+  // }, [current])
+  const current=meme;
+  const setCurrent=onMemeChange;
   const onNumberInputChange = (evt) => {
     const newState = { ...current };
     newState[evt.target.name] = parseInt(evt.target.value);
