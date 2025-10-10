@@ -40,6 +40,6 @@ export const saveCurrent = createAsyncThunk(
   }
 );
 
-export const { update } = current.actions;
+export const { update, clear } = current.actions;
 const currentReducer = current.reducer;
 export default currentReducer;

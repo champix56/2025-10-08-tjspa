@@ -4,9 +4,8 @@ import MemeForm from "../components/functionnal/MemeForm/MemeForm.stored";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch } from "react-redux";
-import { update } from "../store/current";
+import { update, clear } from "../store/current";
 import store from "../store/store";
-import { emptyMeme } from "orsys-tjs-meme";
 const Editor: React.FC = () => {
   const dispatch = useDispatch();
   const params = useParams();
@@ -16,6 +15,7 @@ const Editor: React.FC = () => {
       .getState()
       .ressources.memes.find((m) => m.id === Number(params.id));
     if (!found) {
+      dispatch(clear());
       navigate("/Editor");
       return;
     }
